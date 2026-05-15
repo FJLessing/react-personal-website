@@ -12,6 +12,27 @@ export function Interests() {
         </p>
       </div>
       <div className="md:flex flex-wrap">
+      <div className="p-12 border border-zinc-800 md:col-span-2">
+        <h3 className="text-lg text-white mb-2">
+          <span className="text-yellow-600">AI agentic</span> Skills &amp; Prompting
+        </h3>
+        <p className="text-zinc-400 mb-2">
+          AI has become a core part of life for developers and I've been working on
+          how to best adopt AI and Agentic development to my and my devs processess.
+          I've been building skills with Claude, Gemini and OpenCode and figuring out
+          how to set up agents, both for development and for independent action.
+        </p>
+        <p className="text-zinc-400">
+          I've been refining the process of providing context through
+          experimentation and learning from the community, and practicing this
+          with personal projects in my homelab and on our internal projects.
+        </p>
+        <p className="text-zinc-400">
+          I've even been experimenting with AI driven scoping and documentation,
+          AI driven test development and most succesfully AI driven data manipulation
+          and data porting.
+        </p>
+      </div>
         <div className="p-12 md:pr-6 border border-zinc-800 md:basis-1/2">
           <h3 className="text-lg text-white mb-2">
             Learning <span className="text-yellow-600">Go</span>
@@ -43,25 +64,6 @@ export function Interests() {
             I've moved from using and customsing other people's models to
             setting myself the goal of modelling and building my own electronics
             projects, like a bluetooth speaker, and a small synthesizer.
-          </p>
-        </div>
-        <div className="p-12 border border-zinc-800 md:col-span-2">
-          <h3 className="text-lg text-white mb-2">
-            <span className="text-yellow-600">AI agentic</span> spec driven
-            development
-          </h3>
-          <p className="text-zinc-400 mb-2">
-            AI has become a daily part of life for developers and I've been
-            trying to find ways to make the tools a little more predictable and
-            efficient. I've been experimenting with different tools and
-            frameworks to figure out the best ways of getting the AI to do what
-            I need, and to do it well.
-          </p>
-          <p className="text-zinc-400">
-            I've been refining the process of providing context through
-            experimentation and learning from the community, and practicing this
-            with personal projects in my homelab or on my desktop that I would
-            otherwise never have had the time for.
           </p>
         </div>
       </div>
