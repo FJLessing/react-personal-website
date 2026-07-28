@@ -1,0 +1,33 @@
+# Apache configuration for fjlessing.co.za
+# The site is statically pre-rendered to flat .html files; these rules map
+# clean extensionless URLs onto those files.
+#
+#   /            -> index.html        (via DirectoryIndex)
+#   /blog        -> blog.html
+#   /blog/my-post -> blog/my-post.html
+
+RewriteEngine On
+
+# Canonicalise trailing slashes to clean URLs (e.g. /blog/ -> /blog)
+RewriteCond %{REQUEST_URI} ^(.+)/+$
+RewriteRule ^ %1 [R=301,L]
+
+# Serve real files and directories directly (assets, favicon, sitemap, rss)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Map extensionless URLs onto pre-rendered .html files
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Pre-rendered 404 page
+ErrorDocument 404 /404.html
+
+# Long-cache fingerprinted build assets
+<IfModule mod_expires.c>
+  <FilesMatch "\.(js|css|png|jpg|jpeg|webp|woff2?)$">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+</IfModule>

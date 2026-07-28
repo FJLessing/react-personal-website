@@ -1,23 +1,16 @@
-import { Navigation } from "@/app/components/Navigation";
-import { Hero } from "@/app/components/Hero";
-import { About } from "@/app/components/About";
-import { Experience } from "@/app/components/Experience";
-import { Skills } from "@/app/components/Skills";
-import { Contact } from "@/app/components/Contact";
-import { Footer } from "@/app/components/Footer";
-import { Interests } from "./components/Interests";
+import { Route, Routes } from "react-router";
+import Home from "./pages/Home";
+import BlogIndex from "./pages/BlogIndex";
+import BlogPost from "./pages/BlogPost";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black/90 text-white">
-      <Navigation />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Interests />
-      <Contact />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/blog" element={<BlogIndex />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }

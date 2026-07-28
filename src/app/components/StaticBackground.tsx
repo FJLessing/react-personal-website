@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 
 export function Background() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  let canvasWidth = window.innerWidth;
-  let canvasHeight = window.innerHeight;
 
   useEffect(() => {
     if (canvasRef.current === null) return;
+    // window access lives inside useEffect so this component stays
+    // safe to render on the server (SSG).
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
     const canvas = canvasRef.current;
 
     const setSize = () => {

@@ -6,23 +6,25 @@ type Grid = Cell[][];
 const GameOfLife = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Detect mobile (screen width < 768px or touch device)
-  const isMobile: boolean =
-    window.innerWidth < 768 ||
-    "ontouchstart" in window ||
-    navigator.maxTouchPoints > 0;
-
-  // Settings - optimized for mobile vs desktop
-  const RESOLUTION: number = isMobile
-    ? Math.max(window.innerWidth, window.innerHeight) / 48
-    : Math.max(window.innerWidth, window.innerHeight) / 144;
-  const SPEED: number = isMobile ? 16 : 12;
-  const REPULSION_RADIUS: number = isMobile ? 4 : 8;
-  const PUSH_DISTANCE: number = isMobile ? 1 : 2;
-  const SPAWN_INTERVAL: number = isMobile ? 4 : 2;
-  const INITIAL_DENSITY: number = isMobile ? 0.9 : 0.85;
-
   useEffect(() => {
+    // Detect mobile (screen width < 768px or touch device)
+    // Note: window/navigator access lives inside useEffect so this
+    // component stays safe to render on the server (SSG).
+    const isMobile: boolean =
+      window.innerWidth < 768 ||
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0;
+
+    // Settings - optimized for mobile vs desktop
+    const RESOLUTION: number = isMobile
+      ? Math.max(window.innerWidth, window.innerHeight) / 48
+      : Math.max(window.innerWidth, window.innerHeight) / 144;
+    const SPEED: number = isMobile ? 16 : 12;
+    const REPULSION_RADIUS: number = isMobile ? 4 : 8;
+    const PUSH_DISTANCE: number = isMobile ? 1 : 2;
+    const SPAWN_INTERVAL: number = isMobile ? 4 : 2;
+    const INITIAL_DENSITY: number = isMobile ? 0.9 : 0.85;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 

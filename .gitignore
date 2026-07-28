@@ -8,6 +8,7 @@ yarn-error.log*
 # Production builds
 build/
 dist/
+dist-ssr/
 public/*.php
 
 # Environment variables
